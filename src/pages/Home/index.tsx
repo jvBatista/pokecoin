@@ -73,7 +73,7 @@ export function Home() {
                 <OperationButton
                     operation="history"
                     text="Histórico de Operações"
-                    buttonFunction={() => navigate("/trade")}
+                    buttonFunction={() => navigate("/history")}
                 />
             </OperationsContainer>
 

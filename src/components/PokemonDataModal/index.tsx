@@ -62,6 +62,7 @@ export function PokemonDataModal(
 
         window.alert(`Aquisição de ${pokemon.name.toUpperCase()} por $${value.toFixed(2)} registrada com sucesso!!`);
         setShowModal(false);
+        window.location.reload()
     };
 
     function removePokemonFromCollection(value: number) {
@@ -86,6 +87,7 @@ export function PokemonDataModal(
                     console.log(index, collection);
                     sessionStorage.setItem('@pokecoin/userCollection', JSON.stringify(collection));
                     window.alert(`Venda de ${pokemon.name.toUpperCase()} por $${value.toFixed(2)} registrada com sucesso!!`);
+                    window.location.reload()
                 }
             }
         }

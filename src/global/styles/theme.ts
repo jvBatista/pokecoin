@@ -10,6 +10,8 @@ export default {
         secondary500: '#F50057',
         secondary700: '#D32F2F',
 
+        terciary: '#78C850',
+
         on_primary: 'white',
         on_secondary: '#4A148C',
     },
