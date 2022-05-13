@@ -8,6 +8,6 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.div`
-    font-size: clamp(.5rem, 1.2vw, 1.2rem);
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
     font-weight: 700;
 `;

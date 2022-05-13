@@ -9,6 +9,7 @@ export const Container = styled.div`
     justify-content: flex-start;
     align-items: center;
     overflow-x: hidden;
+    text-align: center;
 `;
 
 export const TopSection = styled.div`
@@ -38,7 +39,7 @@ export const SearchSection = styled.div`
 `;
 
 export const HomeTitle = styled.div`
-    font-size: clamp(1rem, 5vw, 5rem);
+    font-size: clamp(3rem, 5vw, 5rem);
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -46,14 +47,14 @@ export const HomeTitle = styled.div`
 `;
 
 export const HomeSubTitle = styled.div`
-    font-size: clamp(.8rem, 3.5vw, 3.5rem);
+    font-size: clamp(1.5rem, 3.5vw, 3.5rem);
     font-weight: 900;
     letter-spacing: .75vw;
     margin-top: .5vh;
-    margin-bottom: .25vh;
+    margin-bottom: 1.5vh;
 `;
 
 export const HomeText = styled.div`
-    font-size: clamp(.5rem, 2vw, 1.5rem);
+    font-size: clamp(1.5rem, 2vw, 1.75rem);
     font-weight: 500;
 `;

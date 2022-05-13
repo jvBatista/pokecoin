@@ -26,7 +26,7 @@ export const types = {
 }
 
 export const PokemonCard = styled.button<PokemonTypes>`
-    width: 10rem;
+    width: clamp(7rem, 10vw, 10rem);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -57,7 +57,7 @@ export const PokemonImage = styled.img`
 `;
 
 export const TitleText = styled.div`
-    font-size: clamp(.75rem, 1rem, 1.2rem);
+    font-size: clamp(.75rem, 1vw, 1.2rem);
     font-weight: 900;
     letter-spacing: 2px;
     margin-bottom: 5%;

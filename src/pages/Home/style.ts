@@ -25,6 +25,7 @@ export const CenterSection = styled.div`
     justify-content: center;
     align-items: center;
     margin-bottom: 5vh;
+    text-align: center;
 `;
 
 export const OperationsContainer = styled.div`
@@ -33,10 +34,16 @@ export const OperationsContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
     margin: 2vh 0;
+
+    @media only screen and (max-width: 1200px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: space-evenly;
+    }
 `;
 
 export const HomeTitle = styled.div`
-    font-size: clamp(1rem, 5vw, 5rem);
+    font-size: clamp(3rem, 5vw, 5rem);
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -44,7 +51,7 @@ export const HomeTitle = styled.div`
 `;
 
 export const HomeSubTitle = styled.div`
-    font-size: clamp(.8rem, 3.5vw, 3.5rem);
+    font-size: clamp(1.5rem, 3.5vw, 3.5rem);
     font-weight: 900;
     letter-spacing: .75vw;
     margin-top: .5vh;
@@ -52,6 +59,6 @@ export const HomeSubTitle = styled.div`
 `;
 
 export const HomeText = styled.div`
-    font-size: clamp(.5rem, 2vw, 1.75rem);
+    font-size: clamp(1.5rem, 2vw, 1.75rem);
     font-weight: 500;
 `;

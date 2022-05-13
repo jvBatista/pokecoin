@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { TextButton } from "../TextButton";
 
 export const Background = styled.div`
     width: 100%;
@@ -20,6 +19,11 @@ export const Container = styled.div`
     position: relative;
     z-index: 10;
     border-radius: 1rem;
+
+    @media only screen and (max-width: 850px) {
+        width: min(500px, 90%);
+        height: min(800px, 50vh);
+    }
 `;
 
 export const ModalContent = styled.div`
@@ -29,6 +33,13 @@ export const ModalContent = styled.div`
     justify-content: space-between;
     align-items: center;
     font-weight: 500;
+    font-size: clamp(.8rem, 1vw, 1.25rem);
+
+    @media only screen and (max-width: 850px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: space-between;
+    }
 `;
 
 export const ImageContainer = styled.div`
@@ -36,10 +47,14 @@ export const ImageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (max-width: 850px) {
+        height: 50%;
+    }
 `;
 
 export const PokemonImage = styled.img`
-    width: 75%;
+    width: min(100%, 25rem);
 `;
 
 export const DataSection = styled.div`
@@ -50,6 +65,11 @@ export const DataSection = styled.div`
     width: 50%;
     height: 100%;
     background: ${({theme}) => theme.colors.primary700};
+
+    @media only screen and (max-width: 850px) {
+        height: 50%;
+        width: 100%;
+    }
 `;
 
 export const InfoContainer = styled.div`
@@ -70,7 +90,7 @@ export const InfoRow = styled.div`
 
 export const Atribute = styled.div`
     display: flex;
-    margin: 1rem;
+    margin: 1vh;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -89,7 +109,7 @@ export const AtributeValue = styled.div`
 export const ButonContainer = styled.div`
     width: 90%;
     display: flex;
-    margin: 1rem;
+    margin: 1vh;
     justify-content: flex-end;
     align-items: center;
 `;

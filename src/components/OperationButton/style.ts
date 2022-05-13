@@ -5,11 +5,12 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 2vh;
 `;
 
 export const Button = styled.button`
-    width: clamp(5rem, 15vw, 15rem);
-    height: clamp(5rem, 15vw, 15rem);
+    width: clamp(8rem, 15vw, 15rem);
+    height: clamp(8rem, 15vw, 15rem);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,8 +27,8 @@ export const Button = styled.button`
 `;
 
 export const ButtonText = styled.div`
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 1vw, 1.5rem);
     font-weight: 500;
-    margin-top: 1.25rem;
+    margin-top: 1.25vh;
     color: ${({ theme }) => theme.colors.primary100};
 `;

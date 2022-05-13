@@ -27,9 +27,11 @@ export interface TransactionList {
 
 export function History() {
     const [transactionList, setTransactionList] = useState<TransactionList[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     function getTransactionHistory() {
+        setIsLoading(true);
         const data = sessionStorage.getItem("@pokecoin/operationHistory");
 
         if (!data) {
@@ -39,6 +41,7 @@ export function History() {
 
             setTransactionList(opHistory);
         }
+        setIsLoading(false);
     }
 
     useEffect(() => {
@@ -59,15 +62,19 @@ export function History() {
             <CenterSection>
                 <HomeSubTitle>HISTÓRICO</HomeSubTitle>
                 <HomeText>acompanhe suas transações passadas</HomeText>
-                
-                {
-                    transactionList.length ? (
-                        <TransactionTable transactionList={transactionList} />
-                    ) : (
-                        <Loading />
-                    )
-                }
+
             </CenterSection>
+            {
+                transactionList.length ? (
+                    <>
+                        {
+                            !isLoading ? <TransactionTable transactionList={transactionList} /> : <Loading />
+                        }
+                    </>
+                ) : (
+                    <HomeText>Não encontramos nenhum resultado...</HomeText>
+                )
+            }
 
         </Container>
     )
