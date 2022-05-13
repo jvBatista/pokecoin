@@ -41,8 +41,13 @@ export async function getTypeInfo(typeId: number | string) {
     }
 };
 
-export async function getGenInfo(genId: number | string) {
+export async function getGenInfo(genId: string | null) {
     try {
+        if(!genId) {
+            const res = await api.get("/generation/");
+            return res.data.results;
+        }
+
         const res = await api.get(`/generation/${genId}`);
 
         return res.data.pokemon_species;

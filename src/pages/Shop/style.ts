@@ -19,7 +19,7 @@ export const TopSection = styled.div`
 `;
 
 export const CenterSection = styled.div`
-    width: max(60%, 22.5rem);
+    width: max(70%, 22.5rem);
     display: flex;
     flex-direction: column;
     justify-content: center;

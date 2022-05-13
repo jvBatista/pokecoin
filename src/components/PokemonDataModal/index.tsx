@@ -72,7 +72,6 @@ export function PokemonDataModal(
             window.alert(`Falha ao registrar a venda. Tente novamente...`);
         } else {
             let collection = JSON.parse(data);
-            console.log(collection);
 
             if (!collection) {
                 window.alert(`Falha ao registrar a venda. Tente novamente...`);
@@ -84,7 +83,6 @@ export function PokemonDataModal(
                     window.alert(`Falha ao registrar a venda. Tente novamente...`);
                 } else {
                     collection.splice(index, 1);
-                    console.log(index, collection);
                     sessionStorage.setItem('@pokecoin/userCollection', JSON.stringify(collection));
                     window.alert(`Venda de ${pokemon.name.toUpperCase()} por $${value.toFixed(2)} registrada com sucesso!!`);
                     window.location.reload()

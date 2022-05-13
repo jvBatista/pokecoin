@@ -37,7 +37,6 @@ export function History() {
         } else {
             const opHistory = JSON.parse(data);
 
-            console.log(opHistory);
             setTransactionList(opHistory);
         }
     }

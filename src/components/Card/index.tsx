@@ -39,7 +39,7 @@ export function Card({ name, displayPokemon }: CardProps) {
         setIsLoading(true);
         const data = await getPokemon(name);
 
-        setPokemon(data);
+        setPokemon(data ? data : null);
         setIsLoading(false);
     };
 
@@ -50,12 +50,14 @@ export function Card({ name, displayPokemon }: CardProps) {
     return (
         <PokemonCard
             typeName={pokemon?.types[0].type.name || ""}
-            onClick={() => displayPokemon(pokemon || {} as PokemonProps)}
+            onClick={() => {
+                if(pokemon) displayPokemon(pokemon || {} as PokemonProps)
+            }}
         >
             {!isLoading ? (
                 <>
                     <PokemonImage src={pokemon?.sprites.front_default} />
-                    <TitleText>{pokemon?.name.toUpperCase()}</TitleText>
+                    <TitleText>{pokemon?.name.toUpperCase() || "Não encontrado"}</TitleText>
                 </>
             ) :
                 <PokemonImage src={pokeballSpin} />}

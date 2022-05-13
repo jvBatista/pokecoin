@@ -37,7 +37,7 @@ export function TransactionTable({ transactionList }: TransactionTableProps) {
                             </td>
                             <td style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: ".5rem", color: row.type == "BUY" ? '#F50057' : '#78C850' }}>
                                 <ArrowsDownUp size={24} />
-                                {`$ ${row.value}`}
+                                {`$ ${row.value.toFixed(8)}`}
                             </td>
                             <td>
                                 {/* {`${row.date.getDate()}/${row.date.getMonth()+1}/${row.date.getFullYear()}`} */}

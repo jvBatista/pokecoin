@@ -5,6 +5,7 @@ import CountUp from 'react-countup';
 import { OperationButton } from "../../components/OperationButton";
 import { DolarStatus } from "../../components/DolarStatus";
 import { getCurrentDolarValue } from "../../services/coinApi";
+import background_logo from "../../assets/pokeball_bg.png";
 import {
     CenterSection,
     Container,
