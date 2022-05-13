@@ -1,6 +1,7 @@
 import { CurrencyBtc } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CountUp from 'react-countup';
 import { OperationButton } from "../../components/OperationButton";
 import { DolarStatus } from "../../components/DolarStatus";
 import { getCurrentDolarValue } from "../../services/coinApi";
@@ -39,14 +40,21 @@ export function Home() {
     return (
         <Container>
             <TopSection>
-                <DolarStatus />
+                <DolarStatus updateDolarValue={setDolarValue}/>
             </TopSection>
 
             <CenterSection>
                 <HomeSubTitle>MINHA CARTEIRA</HomeSubTitle>
-                <HomeTitle>{`${collectionValue*EXP_TO_BTC} `} <CurrencyBtc size={72} /></HomeTitle>
+                <HomeTitle>
+                    <CountUp end={collectionValue * EXP_TO_BTC} duration={1} decimals={8} />
+                    <CurrencyBtc size={72} />
+                </HomeTitle>
 
-                <HomeText>{`(~ $ ${Number(collectionValue * dolarValue * EXP_TO_BTC).toFixed(2)})`}</HomeText>
+                <HomeText>
+                    (~ $ 
+                        <CountUp end={collectionValue * EXP_TO_BTC * dolarValue} duration={1} decimals={8} />
+                    )
+                </HomeText>
             </CenterSection>
 
             <OperationsContainer>
@@ -61,7 +69,7 @@ export function Home() {
                     text="Registrar Venda"
                     buttonFunction={() => navigate("/sell")}
                 />
-                
+
                 <OperationButton
                     operation="history"
                     text="Histórico de Operações"

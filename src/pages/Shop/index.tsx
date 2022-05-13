@@ -17,6 +17,7 @@ import {
 import { CircleButton } from "../../components/CircleButton";
 import { TextButton } from "../../components/TextButton";
 import { PokemonProps } from "../../components/Card";
+import { Loading } from "../../components/Loading";
 
 export interface PokedexEntryProps {
     name: string;
@@ -67,14 +68,24 @@ export function Shop() {
                     <HomeText>selecione o pokémon a ser adquirido</HomeText>
                     <SearchSection>
                         <SearchBar inputValue={query} setInputValue={setQuery} />
-                        {/* <TextButton text="Pesquisar" buttonFunction={() => { }} /> */}
+                        <TextButton text="Pesquisar" buttonFunction={() => { }} />
                     </SearchSection>
                 </CenterSection>
 
                 {
-                    !isLoading ? <Grid displayPokemon={displayPokemon} pokemonList={pokedex.filter(pokemon => {
+                    pokedex.filter(pokemon => {
                         if (!query || pokemon.name.toLowerCase().includes(query.toLowerCase().trim())) return pokemon;
-                    })} /> : <h1>Loading</h1>
+                    }).length ? (
+                        <>
+                            {
+                                !isLoading ? <Grid displayPokemon={displayPokemon} pokemonList={pokedex.filter(pokemon => {
+                                    if (!query || pokemon.name.toLowerCase().includes(query.toLowerCase().trim())) return pokemon;
+                                })} /> : (<Loading />)
+                            }
+                        </>
+                    ) : (
+                        <HomeText>Não encontramos nenhum resultado...</HomeText>
+                    )
                 }
             </Container>
         </>

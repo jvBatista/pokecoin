@@ -480,6 +480,11 @@ convert-source-map@^1.7.0:
   dependencies:
     safe-buffer "~5.1.1"
 
+countup.js@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-2.1.0.tgz#86c1c9075a2eed138262b0ea1344ebe71b41e579"
+  integrity sha512-VanMzLEjkt3Hp/ty5BXikM8s4wE3OH4m1AnFro7THR86nYGRvGfGCoV+zrRJcqTbZi7X1egkLSIeUKDz7+4XLA==
+
 css-color-keywords@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/css-color-keywords/-/css-color-keywords-1.0.0.tgz#fea2616dc676b2962686b3af8dbdbe180b244e05"
@@ -816,6 +821,13 @@ postcss@^8.4.13:
     nanoid "^3.3.3"
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
+
+react-countup@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-6.2.0.tgz#091ef28874c5bd11fb713b98c56dd2093a80a932"
+  integrity sha512-3WOKAQpWgjyFoH231SHEpIpHhDGb5g5EkTppM6T7vLa3X+8WMdw6750vVcY0wxysKiY00gTFhDwSB5qLU+xPZA==
+  dependencies:
+    countup.js "^2.1.0"
 
 react-dom@^18.0.0:
   version "18.1.0"

@@ -13,7 +13,7 @@ const api = axios.create({
 
 export async function getPokemonList() {
     try {
-        const res = await api.get(`/pokemon/?offset=0&limit=151`);
+        const res = await api.get(`/pokemon?limit=151&offset=0`);
 
         return res.data.results;
     } catch (error) {

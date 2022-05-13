@@ -6,12 +6,17 @@ import {
     Text
 } from "./style";
 
-export function DolarStatus() {
+interface DolarStatusProps {
+    updateDolarValue?: (value: number) => void;
+}
+
+export function DolarStatus({ updateDolarValue = (value: number) => { } }: DolarStatusProps) {
     const [currentValue, setCurrentValue] = useState(0);
 
-    async function getDolarValue(){
+    async function getDolarValue() {
         const amount = await getCurrentDolarValue();
         setCurrentValue(amount);
+        updateDolarValue(amount);
     }
 
     useEffect(() => {

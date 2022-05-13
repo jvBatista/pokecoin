@@ -133,7 +133,7 @@ export function PokemonDataModal(
             <Container>
                 <ModalContent>
                     <ImageContainer>
-                        <PokemonImage src={pokemon.sprites.front_default} />
+                        <PokemonImage src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} />
                     </ImageContainer>
 
                     <DataSection>

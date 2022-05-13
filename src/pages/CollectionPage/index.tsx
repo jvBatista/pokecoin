@@ -17,6 +17,7 @@ import { CircleButton } from "../../components/CircleButton";
 import { getCurrentDolarValue } from "../../services/coinApi";
 import { PokemonProps } from "../../components/Card";
 import { stringify } from "querystring";
+import { Loading } from "../../components/Loading";
 
 export function CollectionPage() {
     const [query, setQuery] = useState("");
@@ -65,9 +66,19 @@ export function CollectionPage() {
                 </CenterSection>
 
                 {
-                    !isLoading ? <Grid displayPokemon={displayPokemon} pokemonList={collection.filter((pokemon: {name: string;}) => {
+                    collection.filter((pokemon: { name: string; }) => {
                         if (!query || pokemon.name.toLowerCase().includes(query.toLowerCase().trim())) return pokemon;
-                    })} /> : <h1>Loading</h1>
+                    }).length ? (
+                        <>
+                            {
+                                !isLoading ? <Grid displayPokemon={displayPokemon} pokemonList={collection.filter((pokemon: { name: string; }) => {
+                                    if (!query || pokemon.name.toLowerCase().includes(query.toLowerCase().trim())) return pokemon;
+                                })} /> :  (<Loading/>)
+                            }
+                        </>
+                    ) : (
+                        <HomeText>Não encontramos nenhum resultado...</HomeText>
+                    )
                 }
             </Container>
         </>
