@@ -1,5 +1,5 @@
-import { Card } from "../Card";
-import { PokedexEntryProps, PokemonProps } from "../Pokedex";
+import { PokedexEntryProps } from "../../pages/Shop";
+import { Card, PokemonProps } from "../Card";
 import {
     CardGrid
 } from "./style";
