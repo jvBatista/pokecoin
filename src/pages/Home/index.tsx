@@ -5,7 +5,6 @@ import CountUp from 'react-countup';
 import { OperationButton } from "../../components/OperationButton";
 import { DolarStatus } from "../../components/DolarStatus";
 import { getCurrentDolarValue } from "../../services/coinApi";
-import background_logo from "../../assets/pokeball_bg.png";
 import {
     CenterSection,
     Container,
@@ -15,6 +14,7 @@ import {
     OperationsContainer,
     TopSection
 } from "./style";
+import api from "../../services/api";
 
 const EXP_TO_BTC = 0.00000001;
 
@@ -27,11 +27,17 @@ export function Home() {
         const amount = await getCurrentDolarValue();
         setDolarValue(amount);
 
-        const data = sessionStorage.getItem("@pokecoin/userCollection") || "";
-        const collection = JSON.parse(data);
-        let currentCollectionValue = 0;
-        collection.forEach((element: { base_experience: any; }) => currentCollectionValue += element.base_experience)
-        setCollectionValue(currentCollectionValue);
+        try {
+            const res = await api.get("/pokemon");
+
+            let currentCollectionValue = 0;
+            res.data.forEach((element: { base_experience: number; }) => currentCollectionValue += element.base_experience)
+            setCollectionValue(currentCollectionValue);
+        } catch (error) {
+            console.log(error);
+            window.alert("Falha ao recuperar dados da conta. Tente novamente...");
+        }
+
     };
 
     useEffect(() => {
@@ -41,7 +47,7 @@ export function Home() {
     return (
         <Container>
             <TopSection>
-                <DolarStatus updateDolarValue={setDolarValue}/>
+                <DolarStatus updateDolarValue={setDolarValue} />
             </TopSection>
 
             <CenterSection>
@@ -52,8 +58,8 @@ export function Home() {
                 </HomeTitle>
 
                 <HomeText>
-                    (~ $ 
-                        <CountUp end={collectionValue * EXP_TO_BTC * dolarValue} duration={1} decimals={8} />
+                    (~ $
+                    <CountUp end={collectionValue * EXP_TO_BTC * dolarValue} duration={1} decimals={8} />
                     )
                 </HomeText>
             </CenterSection>

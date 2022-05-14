@@ -1,22 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DolarStatus } from "../../components/DolarStatus";
-import { PokemonDataModal } from "../../components/PokemonDataModal";
-import { SearchBar } from "../../components/SearchBar";
-import { Grid } from "../../components/Grid";
-import { getPokemonList } from "../../services/pokeApi";
 import {
     CenterSection,
-    SearchSection,
     Container,
     HomeSubTitle,
     HomeText,
-    HomeTitle,
     TopSection
 } from "./style";
 import { CircleButton } from "../../components/CircleButton";
 import { Loading } from "../../components/Loading";
 import { TransactionTable } from "../../components/TransactionsTable";
+import api from "../../services/api";
 
 export interface TransactionList {
     type: "SELL" | "BUY",
@@ -30,16 +25,15 @@ export function History() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    function getTransactionHistory() {
+    async function getTransactionHistory() {
         setIsLoading(true);
-        const data = sessionStorage.getItem("@pokecoin/operationHistory");
+        try {
+            const res = await api.get("/trade");
 
-        if (!data) {
-            console.log("lista vazia");
-        } else {
-            const opHistory = JSON.parse(data);
-
-            setTransactionList(opHistory);
+            setTransactionList(res.data);
+        } catch (error) {
+            console.log(error);
+            window.alert("Falha ao recuperar histórico de transações. Tente novamente...");
         }
         setIsLoading(false);
     }

@@ -14,10 +14,9 @@ import {
     TopSection
 } from "./style";
 import { CircleButton } from "../../components/CircleButton";
-import { getCurrentDolarValue } from "../../services/coinApi";
 import { PokemonProps } from "../../components/Card";
-import { stringify } from "querystring";
 import { Loading } from "../../components/Loading";
+import api from "../../services/api";
 
 export function CollectionPage() {
     const [query, setQuery] = useState("");
@@ -34,9 +33,14 @@ export function CollectionPage() {
     }
 
     const getCollectionValue = async () => {
-        const data = sessionStorage.getItem("@pokecoin/userCollection") || "";
-        const currentCollection = JSON.parse(data);
-        setCollection(currentCollection);
+        try {
+            const res = await api.get("/pokemon");
+
+            setCollection(res.data);
+        } catch (error) {
+            console.log(error);
+            window.alert("Falha ao recuperar coleção de pokémon. Tente novamente...");
+        }
     };
 
     useEffect(() => {
